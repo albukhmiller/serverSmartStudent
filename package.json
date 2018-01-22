@@ -1,0 +1,25 @@
+{
+  "name": "smartstud",
+  "version": "1.0.0",
+  "description": "server for application Smart Student",
+  "main": "server.js",
+
+  "author": "Alex B",
+  "license": "ISC",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.9.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.0-rc0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  }
+}
