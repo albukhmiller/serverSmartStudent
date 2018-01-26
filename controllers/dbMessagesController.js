@@ -8,7 +8,7 @@ var aws = require('aws-sdk');
 exports.registrationMessage = function(req, res, next){
     var message = new Message({
         id_stud: req.body.id_stud,
-        photo1: req.body.photo1,
+        photo1: 'https://s3.us-east-2.amazonaws.com/smartstud/' + req.body.photo,
         photo2: req.body.photo2,
         photo3: req.body.photo3,
         location: req.body.location,
@@ -74,10 +74,14 @@ exports.uploadPhoto = multer({
         s3: s3,
         bucket: 'smartstud',
         metadata: function (req, file, cb) {
-            cb(null, { fieldName: file.fieldname });
+            cb(null, { fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            cb(null, Date.now().toString())
+            cb(null, Date.now().toString() + ".png");
         }
     })
 });
+
+
+//https://s3.us-east-2.amazonaws.com/smartstud/1516913179051
+//s3.<region>.amazonaws.com/<bucket>/name
