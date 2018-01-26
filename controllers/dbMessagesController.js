@@ -1,10 +1,10 @@
 var msg = require('../models/dbMessages');
 var Message = require('../dbModel/Messages');
-/*
+
 var multer = require('multer');
 var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
-*/
+
 exports.registrationMessage = function(req, res){
     var message = new Message({
         id_stud: req.body.id_stud,
@@ -66,13 +66,9 @@ exports.updateStatusDone = function(req, res){
         callbackUpdateStatus(err, res);
     });
 }
-
-//функция загрузки на aws-s3
-/*
-aws.config.loadFromPath('./s3_config.json');
-var s3 = new aws.S3({/*    *///});
-/*
-var upload = multer({
+//Загрузка фото на AWS S3
+var s3 = new aws.S3({/*   */});
+exports.uploadPhoto = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'smartstud',
@@ -83,17 +79,4 @@ var upload = multer({
             cb(null, Date.now().toString())
         }
     })
-}).array('upload', 1);
-
-
-exports.uploadImage = function(req, res, next){
-    upload(req, res, (err) => {
-        console.log(req.body);
-       if(err){
-            console.error(err);
-             return res.sendStatus(500);
-        }
-        return res.sendStatus(200);
-    });
-}
-*/
+});

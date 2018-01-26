@@ -36,28 +36,10 @@ server.get('/api/v1/getMsgUser/:id_stud', msg.findAllMessages);
 
 // aws.config.loadFromPath('./config/s3_config.json');
 
-aws.config.update({
-    secretAccessKey: "BwudzHUdSPsVBWJW9mD6ygTNhsErbsAVkdZsCIGy",
-    accessKeyId: "AKIAIP5FNQOQ7N6H5F5A",
-    region:"us-east-1"
-});
 
-var s3 = new aws.S3({/*   */});
 
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'smartstud',
-        metadata: function (req, file, cb) {
-            cb(null, { fieldName: file.fieldname });
-        },
-        key: function (req, file, cb) {
-            cb(null, Date.now().toString())
-        }
-    })
-});
 
-server.post('/api/v1/image', upload.array('photos', 1), (req, res, next) =>{
+server.post('/api/v1/image', msg.uploadPhoto.array("photo", 3), (req, res, next) =>{
     return res.send('Hello !!!');
 });
 
