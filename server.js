@@ -33,15 +33,8 @@ server.put('/api/v1/updateStatusProc', msg.updateStatusProc);
 server.put('/api/v1/updateStatusDone', msg.updateStatusDone);
 //Получение всех сообщений конкретного пользователя
 server.get('/api/v1/getMsgUser/:id_stud', msg.findAllMessages);
-
-// aws.config.loadFromPath('./config/s3_config.json');
-
-
-
-
-server.post('/api/v1/image', msg.uploadPhoto.array("photo", 3), (req, res, next) =>{
-    return res.send('Hello !!!');
-});
+//Отправка фотографии на AWS-S3
+server.post('/api/v1/image', msg.uploadPhoto.array("photo", 3), msg.registrationMessage);
 
 server.listen(server.get('port'), () => {
     console.log('Server is started');
