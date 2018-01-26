@@ -67,6 +67,7 @@ exports.updateStatusDone = function(req, res){
     });
 }
 //Загрузка фото на AWS S3
+aws.config.loadFromPath('./s3_config.json');
 var s3 = new aws.S3({/*   */});
 exports.uploadPhoto = multer({
     storage: multerS3({
