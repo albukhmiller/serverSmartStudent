@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "server for application Smart Student",
   "main": "server.js",
-
   "author": "Alex B",
   "license": "ISC",
   "scripts": {
@@ -14,10 +13,13 @@
     "node": "8.9.4"
   },
   "dependencies": {
+    "aws-sdk": "^2.185.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongodb": "^3.0.1",
-    "mongoose": "^5.0.0-rc0"
+    "mongoose": "^5.0.0-rc0",
+    "multer": "^1.3.0",
+    "multer-s3": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.14.3"
