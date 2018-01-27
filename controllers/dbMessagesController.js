@@ -8,9 +8,7 @@ var aws = require('aws-sdk');
 exports.registrationMessage = function(req, res, next){
     var message = new Message({
         id_stud: req.body.id_stud,
-        photo1: 'https://s3.us-east-2.amazonaws.com/smartstud/' + req.body.photo,
-        photo2: req.body.photo2,
-        photo3: req.body.photo3,
+        photo: next.location,
         location: req.body.location,
         time_state: req.body.time_state,
         time_impl: req.body.time_impl,
@@ -66,6 +64,7 @@ exports.updateStatusDone = function(req, res){
         callbackUpdateStatus(err, res);
     });
 }
+
 //Загрузка фото на AWS S3
 aws.config.loadFromPath('./s3_config.json');
 var s3 = new aws.S3({/*   */});
@@ -77,11 +76,7 @@ exports.uploadPhoto = multer({
             cb(null, { fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            cb(null, Date.now().toString() + ".png");
+            cb(null, file.originalname);
         }
     })
 });
-
-
-//https://s3.us-east-2.amazonaws.com/smartstud/1516913179051
-//s3.<region>.amazonaws.com/<bucket>/name

@@ -5,15 +5,7 @@ var msgShema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Students'
     },
-    photo1: {
-        type: String,
-        default: null
-    },
-    photo2: {
-        type: String,
-        default: null
-    },
-    photo3: {
+    photo: {
         type: String,
         default: null
     },
