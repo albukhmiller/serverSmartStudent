@@ -5,10 +5,10 @@ var multer = require('multer');
 var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
 
-exports.registrationMessage = function(req, res, next){
+exports.registrationMessage = function(req, res, next, file){
     var message = new Message({
         id_stud: req.body.id_stud,
-        photo: next.location,
+        photo: file.location,
         location: req.body.location,
         time_state: req.body.time_state,
         time_impl: req.body.time_impl,
