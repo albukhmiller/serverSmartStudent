@@ -5,10 +5,12 @@ var multer = require('multer');
 var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
 
-exports.registrationMessage = function(req, res, next, file){
+var filename = null;
+
+exports.registrationMessage = function(req, res, next){
     var message = new Message({
         id_stud: req.body.id_stud,
-        photo: file.location,
+        photo: filename,
         location: req.body.location,
         time_state: req.body.time_state,
         time_impl: req.body.time_impl,
@@ -76,6 +78,7 @@ exports.uploadPhoto = multer({
             cb(null, { fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
+            filename = file.location;
             cb(null, file.originalname);
         }
     })
