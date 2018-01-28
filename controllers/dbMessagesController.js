@@ -17,6 +17,7 @@ exports.registrationMessage = function(req, res, next){
         type_work: req.body.type_work,
         description: req.body.description   
     });
+    filename = null;
     msg.addMessage(message, (err) => {
         if (err){
             console.log(err);
