@@ -78,7 +78,7 @@ exports.uploadPhoto = multer({
             cb(null, { fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            filename = "https://s3.us-east-2.amazonaws.com/smartstud/" + filenamefile.originalname;
+            filename = "https://s3.us-east-2.amazonaws.com/smartstud/" + file.originalname;
             cb(null, file.originalname);
         }
     })
