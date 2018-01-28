@@ -34,7 +34,7 @@ server.put('/api/v1/updateStatusDone', msg.updateStatusDone);
 //Получение всех сообщений конкретного пользователя
 server.get('/api/v1/getMsgUser/:id_stud', msg.findAllMessages);
 //Отправка фотографии на AWS-S3
-server.post('/api/v1/image', msg.uploadPhoto.array("photo", 1), msg.registrationMessage);
+server.post('/api/v1/image', msg.uploadPhoto.array("photo", 3), msg.registrationMessage);
 
 server.listen(server.get('port'), () => {
     console.log('Server is started');
