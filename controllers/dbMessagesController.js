@@ -10,7 +10,7 @@ var filename = null;
 exports.registrationMessage = function(req, res, next){
     var message = new Message({
         id_stud: req.body.id_stud,
-        photo:  "https://s3.us-east-2.amazonaws.com/smartstud/" + filename,
+        photo:  filename,
         location: req.body.location,
         time_state: req.body.time_state,
         time_impl: req.body.time_impl,
@@ -78,7 +78,7 @@ exports.uploadPhoto = multer({
             cb(null, { fieldName: file.fieldname});
         },
         key: function (req, file, cb) {
-            filename = file.originalname;
+            filename = "https://s3.us-east-2.amazonaws.com/smartstud/" + filenamefile.originalname;
             cb(null, file.originalname);
         }
     })
