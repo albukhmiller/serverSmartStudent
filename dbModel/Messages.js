@@ -11,8 +11,8 @@ var msgShema = mongoose.Schema({
     },
     location: String,
     type_work: String,
-    time_state: String,
-    time_impl: String,
+    time_state: Date,
+    time_impl: Date,
     description : String,
     status :{
         type: String,
