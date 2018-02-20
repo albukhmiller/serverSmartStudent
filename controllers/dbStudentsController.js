@@ -14,7 +14,7 @@ exports.addUser = function (req, res) {
             console.log(err);
             return res.sendStatus(500);
         }
-        res.sendStatus(200);
+        res.send(user);
     });
 }
 
